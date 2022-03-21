@@ -13,6 +13,7 @@ class Connect():
         self.HOST = HOST
         self.DB = DB
 
+    def cnx(self):
         try:
             conn = psycopg2.connect(host=self.HOST, database=self.DB, user=self.USER, password=self.PASS)
 
@@ -36,3 +37,6 @@ class Connect():
         cursor.execute(query,params)
         rs = cursor.fetchall()
         return rs
+    
+    def close(self):
+        self.connected.close()
